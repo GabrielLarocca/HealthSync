@@ -1,0 +1,35 @@
+version: '3.7'
+services:
+  web:
+    build:
+      context: ./backend/
+      dockerfile: Dockerfile-dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app/backend
+    command: rails s -b 0.0.0.0 -e development
+
+  database:
+    image: mysql:8.0
+    volumes:
+      - dbdata:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: healthsync
+    ports:
+      - "3307:3306"
+
+  frontend: 
+    build:
+      context: ./frontend/
+      dockerfile: Dockerfile-dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app/frontend
+      - /app/frontend/node_modules
+    command: npm run dev
+volumes:
+  dbdata:

@@ -1,13 +1,9 @@
 class Users < ActiveRecord::Migration[7.1]
 	def change
-		create_table :usuarios do |t|
-		  t.bigint :usuario_id, null: false
-		  t.string :nome, limit: 255
+		create_table :users do |t|
+		  t.string :name, limit: 255
 		  t.string :email, limit: 255
-		  t.string :senha_hash, limit: 255
-		  t.date :data_nascimento
-		  t.string :sexo, limit: 1
-		  t.datetime :data_criacao
+		  t.string :password, limit: 255
 	
 		  t.timestamps
 		end
