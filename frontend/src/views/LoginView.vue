@@ -105,33 +105,28 @@
 </template>
 
 <script setup>
-import { login } from '@/api';
-import { onUpdated, ref } from 'vue';
-import { useRouter } from 'vue-router';
+import { login } from "@/api";
+import { onUpdated, ref } from "vue";
+import { useRouter } from "vue-router";
 
-	const email = ref("");
-	const password = ref("");
-	const router = useRouter();
+const email = ref("");
+const password = ref("");
+const router = useRouter();
 
-	onUpdated(() => {
+onUpdated(() => {});
 
-	});
+async function submit() {
+	if (email.value === "" || password.value === "") {
+		alert("Email e senha são obrigatórios");
+		return;
+	}
 
-	async function submit() {
-		if (email.value === "" || password.value === "") {
-			alert('Email e senha são obrigatórios');
-			return;
-		}
+	// await login({"email": email.value, "password": password.value});
 
-		// await login({"email": email.value, "password": password.value});
+	const res = await login({ email: email.value, password: password.value });
 
-		await login({"email": email.value, "password": password.value}).then(res => {
-			console.log(res)
-			if (res.status === 201) {
-				router.push('/dashboard');
-			}
-		}).catcH((error) => {
-			alert(error);
-		}) 
-	};
+	if (res.status === 200) {
+		router.push("/dashboard");
+	}
+}
 </script>

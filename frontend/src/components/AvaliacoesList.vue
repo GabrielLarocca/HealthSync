@@ -59,7 +59,8 @@ async function fetchData() {
 	console.log('teste')
   try {
     // replace `getPost` with your data fetching util / API wrapper
-    health_profiles.value = await getHealthProfiles()  
+    health_profiles.value = await getHealthProfiles()
+	console.log(health_profiles)  
   } catch (err) {
     error.value = err.toString()
   } finally {

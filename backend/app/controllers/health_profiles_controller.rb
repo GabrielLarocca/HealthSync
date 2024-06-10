@@ -55,6 +55,6 @@ class HealthProfilesController < ApplicationController
   private
 
   def health_profile_params
-    params.required(:health_profile).permit(:name, :birth_date, :gender, :blood_type, :allergise, :weight, :height, :age)
+    params.required(:health_profile).permit(:patient_id, :name, :birth_date, :gender, :blood_type, :allergise, :weight, :height, :age)
   end
 end

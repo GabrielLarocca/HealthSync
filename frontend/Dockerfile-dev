@@ -2,11 +2,13 @@
 FROM node:16-alpine
 
 # Define o diretório de trabalho dentro do contêiner
-WORKDIR /app
+WORKDIR /usr/src/app
 
 # Instala as dependências do projeto
 COPY package*.json ./
 RUN npm install
+
+
 
 # Copia o código-fonte da aplicação para o diretório de trabalho
 COPY . .
@@ -15,4 +17,4 @@ COPY . .
 EXPOSE 5173
 
 # Comando para iniciar a aplicação em modo de desenvolvimento
-CMD ["npm", "run", "build"],
+CMD ["npm", "run", "dev"],

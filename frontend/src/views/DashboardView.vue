@@ -1,6 +1,6 @@
 <script setup>
 import Dashboard from "../components/DashboardItem.vue";
-import Navbar from "../components/NavbarItem.vue";
+import NavbarItem from "../components/NavbarItem.vue";
 </script>
 
 <template>
